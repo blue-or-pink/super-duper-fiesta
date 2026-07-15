@@ -17,17 +17,17 @@ public class Dictionary {
     public Dictionary() throws Exception{
         List<String> pronounsStrings = Spreadsheet.getPronouns();
 
-        for (int i = 0; i < 50; i++){
+        for (int i = 0; i < 39; i++){
             String word = "";
             String gender = null;
             Boolean plural = null;
             int person = 0;
-            String curWord = pronounsStrings.get(i);
+            String curString = pronounsStrings.get(i);
             String curVar = "";
             int curVarNum = 1;
 
-            for (int a = 0; a < curWord.length(); a++){
-                char curChar = curWord.charAt(a);
+            for (int a = 0; a < curString.length(); a++){
+                char curChar = curString.charAt(a);
                 if (String.valueOf(curChar) != ",") {
                     curVar = curVar + curChar;
                 } else {
@@ -49,5 +49,9 @@ public class Dictionary {
             }
             pronouns.add(new Pronoun(word, gender, plural, person));
         }
+    }
+    //
+    public List<Pronoun> getPronounsList() {
+        return pronouns;
     }
 }

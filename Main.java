@@ -15,6 +15,12 @@ public final class Main{
     }
 
     public static void main(String[] args) throws Exception {
-        System.out.println("iowehfoiwehf");
+        for (int i = 0; i < 39; i++) {
+            System.out.println(
+                dictionary.getPronounsList().get(i).word + " " +
+                dictionary.getPronounsList().get(i).gender + " " +
+                dictionary.getPronounsList().get(i).plural + " " +
+                dictionary.getPronounsList().get(i).person);
+        }
     }
 }
