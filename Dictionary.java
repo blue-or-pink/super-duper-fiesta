@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class Dictionary {
     // public static final Noun[] Nouns = {
 
@@ -9,8 +12,9 @@ public class Dictionary {
 
     // };
     //
-    public static final Pronoun[] Pronouns = {
-        //new Pronoun()
-    };
+    public static final List<Pronoun> pronouns = new ArrayList<>();
     
+    public Dictionary() throws Exception{
+        List<String> pronounsStrs = Spreadsheet.getPronouns();
+    }
 }
