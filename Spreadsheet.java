@@ -16,7 +16,7 @@ public class Spreadsheet {
         try (BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream()))){
             String line;
             while ((line = in.readLine()) != null) {
-                strList.add(line);
+                strList.add(line + ",");
             }
         }
 
