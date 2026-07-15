@@ -6,7 +6,7 @@ public class Spreadsheet {
     public static void main(String[] args) throws Exception {
         System.out.println("hello");
         String sheetId = "1mdOiBJqmZvHPYF6hv3Ba1wBR8pLT4l_0grsS_nQh7jc";
-        String urlString = "https://docs.google.com/spreadsheets/d/" + sheetID + "/export?format=csv";
+        String urlString = "https://docs.google.com/spreadsheets/d/" + sheetId + "/export?format=csv";
 
         URL url = new URL(urlString);
         try (BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream()))){
