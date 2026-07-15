@@ -15,7 +15,7 @@ public final class Main{
     }
 
     public static void main(String[] args) throws Exception {
-        for (int i = 0; i < 39; i++) {
+        for (int i = 0; i < 38; i++) {
             System.out.println(
                 dictionary.getPronounsList().get(i).word + " " +
                 dictionary.getPronounsList().get(i).gender + " " +

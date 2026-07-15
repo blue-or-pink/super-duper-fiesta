@@ -17,7 +17,7 @@ public class Dictionary {
     public Dictionary() throws Exception{
         List<String> pronounsStrings = Spreadsheet.getPronouns();
 
-        for (int i = 0; i < 39; i++){
+        for (int i = 0; i < 38; i++){
             String word = "";
             String gender = null;
             Boolean plural = null;
@@ -30,9 +30,11 @@ public class Dictionary {
                 char curChar = curString.charAt(a);
                 if (String.valueOf(curChar) != ",") {
                     curVar = curVar + curChar;
+                    System.out.println(curVar);
                 } else {
                     if (curVarNum == 1){
                         word = curVar;
+                        System.out.println("IHATETS");
                     } else if (curVarNum == 2){
                         gender = curVar;
                     } else if (curVarNum == 3){
