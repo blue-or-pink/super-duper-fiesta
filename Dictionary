@@ -1,0 +1,9 @@
+public class Dictionary {
+    public class Noun {
+
+    }
+    public class Adjective {
+
+    }
+    public class Verb
+}
