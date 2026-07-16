@@ -20,7 +20,7 @@ public class Dictionary {
         for (int i = 0; i < 38; i++){
             String word = "";
             String gender = null;
-            Boolean plural = null;
+            String plural = "";
             int person = 0;
             String curString = pronounsStrings.get(i);
             String curVar = "";
@@ -36,10 +36,10 @@ public class Dictionary {
                     } else if (curVarNum == 2){
                         gender = curVar;
                     } else if (curVarNum == 3){
-                        if (curVar == "TRUE"){
-                            plural = true;
-                        } else if (curVar == "FALSE"){
-                            plural = false;
+                        if (curVar.equals("TRUE")){ //the issue here was the same, it was == instead of .equals so it was never true
+                            plural = "true";
+                        } else if (curVar.equals("FALSE")){
+                            plural = "false";
                         }
                     } else if (curVarNum == 4){
                         person = Integer.parseInt(curVar);
