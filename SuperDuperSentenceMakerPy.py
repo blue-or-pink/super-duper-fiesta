@@ -10,7 +10,7 @@ superDuperSentenceSentenceStructure = {
         }
     }
 }
-
+# note: default article going from SDF -> English will just be "a"
 englishStructure = {
     "SP" : {
         "NP" : {
