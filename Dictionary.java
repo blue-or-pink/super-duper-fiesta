@@ -23,7 +23,7 @@ public class Dictionary {
 
             for (int a = 0; a < curString.length(); a++){
                 char curChar = curString.charAt(a); 
-                if (!String.valueOf(curChar).equals(",")) { //it was == earlier which doesn't work for strings apparently
+                if (!String.valueOf(curChar).equals(",")) { //it was == earlier which doesn't work for strings apparently, you need to do .equals
                     curVar = curVar + curChar;
                 } else {
                     if (curVarNum == 1){
@@ -51,5 +51,21 @@ public class Dictionary {
     //
     public List<Pronoun> getPronounsList() {
         return pronouns;
+    }
+
+    public List<Adjective> getAdjectivesList(){
+        return adjectives;
+    }
+
+    public List<Verb> getVerbsList(){
+        return verbs;
+    }
+
+    public List<Preposition> getPrepositionsList(){
+        return prepositions;
+    }
+
+    public List<Marker> getMarkersList(){
+        return markers;
     }
 }

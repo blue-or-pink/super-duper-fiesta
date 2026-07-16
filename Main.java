@@ -2,7 +2,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public final class Main{
-   private static final Dictionary dictionary;
+   public static final Dictionary dictionary;
 
     static {
         try {
@@ -16,7 +16,7 @@ public final class Main{
     }
 
     public static void main(String[] args) throws Exception {
-
+        IdentifyEng.identifyEng("sɪ jəghə lætɪs fo məlʊ.");
 
     }
 }
