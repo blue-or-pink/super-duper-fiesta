@@ -17,7 +17,7 @@ public class Enums {
 }
 
 // NOTE: NOT FINISHED!!!
-/*   Scanner scanner = new Scanner(System.in);
+/*      Scanner scanner = new Scanner(System.in);
         System.out.println("What is the gender?");
         System.out.println("(a) all female");
         System.out.println("(b) all male");
@@ -65,8 +65,13 @@ public class Enums {
         for (int i = 0; i<Constants.pronounsListLength; i++){
             if (gender.equals(dictionary.getPronounsList().get(i).gender) && person == dictionary.getPronounsList().get(i).person && plural.equals(dictionary.getPronounsList().get(i).plural)){
                 System.out.println("The correct pronoun is " + dictionary.getPronounsList().get(i).word);
+                System.out.println("It means " + dictionary.getPronounsList().get(i).engWord + " in English.");
             } 
         }
+
+
+
+
 
 
        // for (int i = 0; i < Constants.pronounsListLength; i++) {
@@ -74,6 +79,7 @@ public class Enums {
         //         dictionary.getPronounsList().get(i).word + " " +
         //         dictionary.getPronounsList().get(i).gender + " " +
         //         dictionary.getPronounsList().get(i).plural + " " +
-        //         dictionary.getPronounsList().get(i).person);
+        //         dictionary.getPronounsList().get(i).person) + "" +
+                   dictionary.getPronounsList().get(i).engWord;
         // } 
 */

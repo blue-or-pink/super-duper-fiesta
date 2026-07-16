@@ -16,6 +16,7 @@ public class Dictionary {
             String gender = null;
             String plural = "";
             int person = 0;
+            String engWord = "";
             String curString = pronounsStrings.get(i);
             String curVar = "";
             int curVarNum = 1;
@@ -37,12 +38,14 @@ public class Dictionary {
                         }
                     } else if (curVarNum == 4){
                         person = Integer.parseInt(curVar);
+                    } else if (curVarNum == 5){
+                        engWord = curVar;
                     }
                     curVarNum +=1;
                     curVar = ""; //it never reset curVar earlier so it wasn't actually separating the values
                 }      
             }
-            pronouns.add(new Pronoun(word, gender, plural, person));
+            pronouns.add(new Pronoun(word, gender, plural, person, engWord));
         }
     }
     //

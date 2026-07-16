@@ -7,7 +7,7 @@ public class Pronoun{
     public String plural = "";
     public int person = 0;
     //
-    public Pronoun(String word, String engWord, String gender, String plural, int person) {
+    public Pronoun(String word, String gender, String plural, int person, String engWord) {
         this.word = word;
         this.engWord = engWord;
         this.gender = gender;
