@@ -4,7 +4,6 @@ import java.util.List;
 public class Dictionary {
     public static final List<Adjective> adjectives = new ArrayList<>();
     public static final List<Verb> verbs = new ArrayList<>();
-    public static final List<Article> articles = new ArrayList<>();
     public static final List<Preposition> prepositions = new ArrayList<>();
     public static final List<Marker> markers = new ArrayList<>();
     public static final List<Pronoun> pronouns = new ArrayList<>();
