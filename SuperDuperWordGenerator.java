@@ -1,6 +1,8 @@
-public class SuperDuperWordGenerator {
+import java.util.Random;
+//
 
-    private static final String[] charList = {
+public class SuperDuperWordGenerator {
+    private static final String[] consonants = {
         "p",
         "b",
         "t",
@@ -15,11 +17,14 @@ public class SuperDuperWordGenerator {
         "s",
         "z",
         "ʃ",
-        "ʒ",
         "h",
         "ɹ",
         "j",
         "l",
+        "ʒ"
+    };
+
+    private static final String[] vowels = {
         "i",
         "u",
         "ɪ",
@@ -30,7 +35,38 @@ public class SuperDuperWordGenerator {
         "æ",
         "ɑ"
     };
-    public static void main(String[] args) throws Exception {
 
+    private static final String[] syllableStructures = {
+        "cv",
+        "cvc",
+        "vc"
+    };
+    public static void main(String[] args) throws Exception {
+        Random rand = new Random();
+        for (int i = 0; i < 70; i++) { //50
+            String word = "/";
+            int syllables = rand.nextInt(6);
+            if (syllables == 0) {
+                syllables = 1;
+            }
+            for (int a = 0; a < syllables; a++) {
+                String structure = syllableStructures[rand.nextInt(3)];
+                for (int b = 0; b < structure.length(); b++) {
+                    if (String.valueOf(structure.charAt(b)).equals("c")) {
+                        word = word + consonants[rand.nextInt(consonants.length)];
+                    }
+                    else if (String.valueOf(structure.charAt(b)).equals("v")) {
+                        word = word + vowels[rand.nextInt(vowels.length)];
+                    }
+                }
+                if (a != syllables - 1) {
+                    word = word + ".";
+                }
+                else {
+                    word = word + "/";
+                }
+            }
+            System.out.println(word);
+        }
     }
 }
