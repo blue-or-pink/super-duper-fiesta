@@ -61,14 +61,14 @@ public final class Main{
             plural = "false";
         }
 
-        for (int i = 0; i<38; i++){
+        for (int i = 0; i<Constants.pronounsListLength; i++){
             if (gender.equals(dictionary.getPronounsList().get(i).gender) && person == dictionary.getPronounsList().get(i).person && plural.equals(dictionary.getPronounsList().get(i).plural)){
                 System.out.println("The correct pronoun is " + dictionary.getPronounsList().get(i).word);
             } 
         }
 
 
-       // for (int i = 0; i < 38; i++) {
+       // for (int i = 0; i < Constants.pronounsListLength; i++) {
         //     System.out.println(
         //         dictionary.getPronounsList().get(i).word + " " +
         //         dictionary.getPronounsList().get(i).gender + " " +

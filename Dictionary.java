@@ -12,7 +12,7 @@ public class Dictionary {
     public Dictionary() throws Exception{
         List<String> pronounsStrings = Spreadsheet.getPronouns();
 
-        for (int i = 0; i < 38; i++){
+        for (int i = 0; i < Constants.pronounsListLength; i++){
             String word = "";
             String gender = null;
             String plural = "";
