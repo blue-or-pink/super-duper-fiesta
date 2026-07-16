@@ -27,14 +27,12 @@ public class Dictionary {
             int curVarNum = 1;
 
             for (int a = 0; a < curString.length(); a++){
-                char curChar = curString.charAt(a);
-                if (String.valueOf(curChar) != ",") {
+                char curChar = curString.charAt(a); 
+                if (!String.valueOf(curChar).equals(",")) { //it was == earlier which doesn't work for strings apparently
                     curVar = curVar + curChar;
-                    System.out.println(curVar);
                 } else {
                     if (curVarNum == 1){
                         word = curVar;
-                        System.out.println("IHATETS");
                     } else if (curVarNum == 2){
                         gender = curVar;
                     } else if (curVarNum == 3){
@@ -47,6 +45,7 @@ public class Dictionary {
                         person = Integer.parseInt(curVar);
                     }
                     curVarNum +=1;
+                    curVar = ""; //it never reset curVar earlier so it wasn't actually separating the values
                 }      
             }
             pronouns.add(new Pronoun(word, gender, plural, person));
