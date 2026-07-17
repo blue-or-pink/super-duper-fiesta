@@ -1,15 +1,13 @@
 
 public class Marker{
     //
-    public String word = "";
+    public String purpose = "";
     public String engWord = "";
-    public String type = "";
     public String location = "";
     //
-    public Marker(String word, String engWord, String type, String location) {
-        this.word = word;
+    public Marker(String purpose, String engWord, String location) {
+        this.purpose = purpose;
         this.engWord = engWord;
-        this.type = type;
         this.location = location;
     }
 }
