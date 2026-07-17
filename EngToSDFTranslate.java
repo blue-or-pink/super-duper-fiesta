@@ -74,7 +74,7 @@ public class EngToSDFTranslate {
 
         }
         String str = "";
-        String adjective = "";
+        List<String> adjective = new ArrayList<>();
 
         for (int i=0;i<sentenceWords.size();i++) {
             String engWord = sentenceWords.get(i).word;
@@ -85,7 +85,7 @@ public class EngToSDFTranslate {
                     //System.out.println(x.engWord + " " + engWord + " "+ (x.engWord == engWord));
                     if (x.engWord.equals(engWord)) {
                       //  System.out.println("ihoiuhu");
-                        adjective = x.word;
+                        adjective.add(x.word);
                     }
                 }
                  //str = str + word + " ";
@@ -97,8 +97,11 @@ public class EngToSDFTranslate {
                     }
                 }
                  str = str + word + " ";
-                 str = str + adjective + " ";
-                 adjective = "";
+                 for (String adj: adjective) {
+                    str = str + adj + " ";
+                 }
+                adjective = new ArrayList<>();
+
             }
             if (type == "preposition") {
                 for (Preposition x: dictionary.getPrepositionsList()) {
