@@ -15,7 +15,7 @@ public class EngToSDFTranslate {
 
     public static List<words> sentenceWords = new ArrayList<>();
 
-    public static void engToSDFTranslate(String sentence) throws Exception {
+    public static String engToSDFTranslate(String sentence) throws Exception {
        String curWord = "";
         String wordType ="";
         for (int i = 0; i < sentence.length(); i++){
@@ -126,5 +126,6 @@ public class EngToSDFTranslate {
            
         }
         System.out.println(str);
+        return str;
     }   
 }

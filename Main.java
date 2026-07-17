@@ -1,9 +1,12 @@
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
 
 public final class Main{
    public static final Dictionary dictionary;
-
+    public static String translated = "";
     static {
         try {
             dictionary = new Dictionary();
@@ -21,7 +24,15 @@ public final class Main{
        // while (true) {
             Scanner scanner = new Scanner(System.in);
             String sentence = scanner.nextLine();
-            EngToSDFTranslate.engToSDFTranslate((sentence + " ").toLowerCase());
+            translated = EngToSDFTranslate.engToSDFTranslate((sentence + " ").toLowerCase());
        // }
+       // Write the string directly to a simple text file
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("data.txt"))) {
+            writer.write(translated);
+            System.out.println("Saved string to data.txt");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
+
 }
