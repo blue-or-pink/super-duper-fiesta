@@ -1,10 +1,10 @@
 
-public class Preposition{
+public class Noun{
     //
     public String word = "";
     public String engWord = "";
     //
-    public Preposition(String engWord, String word) {
+    public Noun(String engWord, String word) {
         this.word = word;
         this.engWord = engWord;
     }

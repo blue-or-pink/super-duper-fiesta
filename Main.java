@@ -16,7 +16,7 @@ public final class Main{
     }
 
     public static void main(String[] args) throws Exception {
-        IdentifyEng.identifyEng("sɪ jəghə lætɪs fo vittɑkin.");
+        IdentifyEng.identifyEng("sɪ sɪ jəg tʊtmʊʒŋəvpɔ tɪs ŋʊjʊtɔʃzɪ vittɑkin ");
 
     }
 }

@@ -43,14 +43,20 @@ public class IdentifyEng {
                 }
                 for (int a = 0; a < dictionary.getVerbsList().size(); a++){
                     if (dictionary.getVerbsList().get(a).word.equals(curWord)){
-                        wordType = "marker";
+                        wordType = "verb";
                         System.out.println(curWord + " is a verb");
                     }
                 }
                 for (int a = 0; a < dictionary.getAdjectivesList().size(); a++){
                     if (dictionary.getAdjectivesList().get(a).word.equals(curWord)){
-                        wordType = "marker";
+                        wordType = "adjective";
                         System.out.println(curWord + " is an adjective");
+                    }
+                }
+                for (int a = 0; a < dictionary.getNounsList().size(); a++){
+                    if (dictionary.getNounsList().get(a).word.equals(curWord)){
+                        wordType = "noun";
+                        System.out.println(curWord + " is a noun");
                     }
                 }
 

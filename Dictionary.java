@@ -7,9 +7,15 @@ public class Dictionary {
     public static final List<Preposition> prepositions = new ArrayList<>();
     public static final List<Marker> markers = new ArrayList<>();
     public static final List<Pronoun> pronouns = new ArrayList<>();
+    public static final List<Noun> nouns = new ArrayList<>();
     
     public Dictionary() throws Exception{
         List<String> pronounsStrings = Spreadsheet.getPronouns();
+        List<String> adjectivesStrings = Spreadsheet.getAdjectives();
+        List<String> verbsStrings = Spreadsheet.getVerbs();
+        List<String> prepositionsStrings = Spreadsheet.getPrepositions();
+        List<String> nounsStrings = Spreadsheet.getNouns();
+
 
         for (int i = 0; i < Constants.pronounsListLength; i++){
             String word = "";
@@ -47,8 +53,107 @@ public class Dictionary {
             }
             pronouns.add(new Pronoun(word, gender, plural, person, engWord));
         }
+
+        //prepositions, verbs
+        for (int i = 0; i < Constants.adjectivesListLength; i++){
+            String engWord = "";
+            String word = "";
+            String curString = adjectivesStrings.get(i);
+            String curVar = "";
+            int curVarNum = 1;
+
+            for (int a = 0; a < curString.length(); a++){
+                char curChar = curString.charAt(a); 
+                if (!String.valueOf(curChar).equals(",")) {
+                    curVar = curVar + curChar;
+                } else {
+                    if (curVarNum == 1){
+                        engWord = curVar;
+                    } else if (curVarNum == 2){
+                        word = curVar;
+                    }
+                    curVarNum +=1;
+                    curVar = "";
+                }      
+            }
+            adjectives.add(new Adjective(engWord, word));
+        }
+
+        for (int i = 0; i < Constants.prepositionsListLength; i++){
+            String engWord = "";
+            String word = "";
+            String curString = prepositionsStrings.get(i);
+            String curVar = "";
+            int curVarNum = 1;
+
+            for (int a = 0; a < curString.length(); a++){
+                char curChar = curString.charAt(a); 
+                if (!String.valueOf(curChar).equals(",")) {
+                    curVar = curVar + curChar;
+                } else {
+                    if (curVarNum == 1){
+                        engWord = curVar;
+                    } else if (curVarNum == 2){
+                        word = curVar;
+                    }
+                    curVarNum +=1;
+                    curVar = "";
+                }      
+            }
+            prepositions.add(new Preposition(engWord, word));
+        }
+
+        for (int i = 0; i < Constants.verbsListLength; i++){
+            String engWord = "";
+            String word = "";
+            String curString = verbsStrings.get(i);
+            String curVar = "";
+            int curVarNum = 1;
+
+            for (int a = 0; a < curString.length(); a++){
+                char curChar = curString.charAt(a); 
+                if (!String.valueOf(curChar).equals(",")) {
+                    curVar = curVar + curChar;
+                } else {
+                    if (curVarNum == 1){
+                        engWord = curVar;
+                    } else if (curVarNum == 2){
+                        word = curVar;
+                    }
+                    curVarNum +=1;
+                    curVar = "";
+                }      
+            }
+            verbs.add(new Verb(engWord, word));
+        }
+
+        for (int i = 0; i < Constants.nounsListLength; i++){
+            String engWord = "";
+            String word = "";
+            String curString = nounsStrings.get(i);
+            String curVar = "";
+            int curVarNum = 1;
+
+            for (int a = 0; a < curString.length(); a++){
+                char curChar = curString.charAt(a); 
+                if (!String.valueOf(curChar).equals(",")) {
+                    curVar = curVar + curChar;
+                } else {
+                    if (curVarNum == 1){
+                        engWord = curVar;
+                    } else if (curVarNum == 2){
+                        word = curVar;
+                    }
+                    curVarNum +=1;
+                    curVar = "";
+                }      
+            }
+            nouns.add(new Noun(engWord, word));
+        }
     }
-    //
+
+
+
     public List<Pronoun> getPronounsList() {
         return pronouns;
     }
@@ -67,5 +172,9 @@ public class Dictionary {
 
     public List<Marker> getMarkersList(){
         return markers;
+    }
+
+    public List<Noun> getNounsList(){
+        return nouns;
     }
 }

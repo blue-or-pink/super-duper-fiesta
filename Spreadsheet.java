@@ -69,6 +69,23 @@ public class Spreadsheet {
 
         return strList;
 
+        
+    }
+    public static List<String> getNouns() throws Exception {
+        List<String> strList = new ArrayList<>();
+        String sheetId = "1cNTBin8Fqo-A71xKde4KHMMU1lDNOOpPWSj6O-lK8Bw";
+        String urlString = "https://docs.google.com/spreadsheets/d/" + sheetId + "/export?format=csv";
+
+        URL url = new URL(urlString);
+        try (BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream()))){
+            String line;
+            while ((line = in.readLine()) != null) {
+                strList.add(line + ",");
+            }
+        }
+
+        return strList;
+
     }
     public static List<String> getVerbs() throws Exception {
         List<String> strList = new ArrayList<>();
