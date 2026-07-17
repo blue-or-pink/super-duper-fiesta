@@ -98,6 +98,7 @@ public class EngToSDFTranslate {
                 }
                  str = str + word + " ";
                  str = str + adjective + " ";
+                 adjective = "";
             }
             if (type == "preposition") {
                 for (Preposition x: dictionary.getPrepositionsList()) {
