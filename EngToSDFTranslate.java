@@ -23,12 +23,15 @@ public class EngToSDFTranslate {
     public static String engToSDFTranslate(String sentence) throws Exception {
        String curWord = "";
         String wordType ="";
+        List<String> punctuation = new ArrayList<>();
         for (int i = 0; i < sentence.length(); i++){
             char curChar = sentence.charAt(i);
             
             if (!(curChar == ' ')){
-                if (curChar == '.' || curChar == '?' || curChar == '!') {
-                   // System.out.println("eij"+curChar+"fwea");
+                if (curChar == '.' || curChar == '?' || curChar == '!' || curChar == ',') {
+                   //System.out.println("_"+curChar+"_");
+                    punctuation.add(String.valueOf(curChar));
+
                 }
                 else {
                     curWord = curWord + curChar;
@@ -36,7 +39,6 @@ public class EngToSDFTranslate {
                 
             } else {
                // System.out.println(curWord);
-                if (!(curWord == "!" || curWord == "?" || curWord == "." )) {
                     for (int a = 0; a < dictionary.getPronounsList().size(); a++){
                         if (dictionary.getPronounsList().get(a).engWord.equals(curWord)){
                             wordType = "pronoun";
@@ -88,14 +90,18 @@ public class EngToSDFTranslate {
                     else if (wordType.equals("")) {
                         wordType = "proper_noun";
                     }
-                }
-                else {
-                    wordType = "punctuation";
-                }
+
+                //System.out.println(curWord+" "+wordType);
                 sentenceWords.add(new words(curWord, wordType));
                 curWord = "";
                 wordType = "";
+                //System.out.println(str);
+                for (String str: punctuation) {
+                    sentenceWords.add(new words(str, "punctuation"));
+                }
+                punctuation = new ArrayList<>();
 
+                
             }
 
 
@@ -199,10 +205,10 @@ public class EngToSDFTranslate {
                 }
             }
             if (type == "punctuation") {
-                for (String adj: adjective) {
-                    str = str + adj;
+                if (str.charAt(str.length() - 1) == ' ') {
+                    str = removeLastChar(str); // remove the extra space
                 }
-                str = str + word;
+                str = str + engWord + " ";
             }
            
         }

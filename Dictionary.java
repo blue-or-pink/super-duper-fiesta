@@ -110,7 +110,7 @@ public class Dictionary {
                 }      
             }
             linkings.add(new Linking(engWord, word));
-            System.out.println(engWord);
+            //System.out.println(engWord);
         }
 
         for (int i = 0; i < Constants.prepositionsListLength; i++){
