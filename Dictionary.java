@@ -8,6 +8,7 @@ public class Dictionary {
     public static final List<Marker> markers = new ArrayList<>();
     public static final List<Pronoun> pronouns = new ArrayList<>();
     public static final List<Noun> nouns = new ArrayList<>();
+    public static final List<Linking> linkings = new ArrayList<>();
     
     public Dictionary() throws Exception{
         List<String> pronounsStrings = Spreadsheet.getPronouns();
@@ -15,7 +16,15 @@ public class Dictionary {
         List<String> verbsStrings = Spreadsheet.getVerbs();
         List<String> prepositionsStrings = Spreadsheet.getPrepositions();
         List<String> nounsStrings = Spreadsheet.getNouns();
-
+        List<String> linkingsStrings = Spreadsheet.getLinking();
+        // if there are a few more of these they should probably have their own spreadsheet,
+        // but for now its ok
+        // and overall maybe making the translator more versatile with these is better? but idk it fine
+        markers.add(new Marker("past", "hə", "start"));
+        markers.add(new Marker("future", "hə", "end"));
+        markers.add(new Marker("conditional", "hi", "end"));
+        markers.add(new Marker("adverb", "ræ", "end"));
+        markers.add(new Marker("plural", "ji", "start"));
 
         for (int i = 0; i < Constants.pronounsListLength; i++){
             String word = "";
@@ -77,6 +86,31 @@ public class Dictionary {
                 }      
             }
             adjectives.add(new Adjective(engWord, word));
+        }
+
+        for (int i = 0; i < Constants.linkingsListLength; i++){
+            String engWord = "";
+            String word = "";
+            String curString = linkingsStrings.get(i);
+            String curVar = "";
+            int curVarNum = 1;
+
+            for (int a = 0; a < curString.length(); a++){
+                char curChar = curString.charAt(a); 
+                if (!String.valueOf(curChar).equals(",")) {
+                    curVar = curVar + curChar;
+                } else {
+                    if (curVarNum == 1){
+                        engWord = curVar;
+                    } else if (curVarNum == 2){
+                        word = curVar;
+                    }
+                    curVarNum +=1;
+                    curVar = "";
+                }      
+            }
+            linkings.add(new Linking(engWord, word));
+            System.out.println(engWord);
         }
 
         for (int i = 0; i < Constants.prepositionsListLength; i++){
@@ -176,5 +210,9 @@ public class Dictionary {
 
     public List<Noun> getNounsList(){
         return nouns;
+    }
+
+    public List<Linking> getLinkingsList(){
+        return linkings;
     }
 }

@@ -38,22 +38,23 @@ public class Spreadsheet {
         return strList;
 
     }
-    // public static List<String> getMarkers() throws Exception {
-    //     List<String> strList = new ArrayList<>();
-    //     String sheetId = "1mmHHsdA1KO5w34oGJ7ABZ3UsTe1n_4I6KMJBFKwToxQ";
-    //     String urlString = "https://docs.google.com/spreadsheets/d/" + sheetId + "/export?format=csv";
+    public static List<String> getLinking() throws Exception {
+        List<String> strList = new ArrayList<>();
+        String sheetId = "1XbgSABu94Khz-NsHtKTDcnP0t5dJ1DKLxVk0MlrMSuE";
+        String urlString = "https://docs.google.com/spreadsheets/d/" + sheetId + "/export?format=csv";
 
-    //     URL url = new URL(urlString);
-    //     try (BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream()))){
-    //         String line;
-    //         while ((line = in.readLine()) != null) {
-    //             strList.add(line + ",");
-    //         }
-    //     }
+        URL url = new URL(urlString);
+        try (BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream()))){
+            String line;
+            while ((line = in.readLine()) != null) {
+                strList.add(line + ",");
+                
+            }
+        }
 
-    //     return strList;
+        return strList;
 
-    // }
+    }
     public static List<String> getPrepositions() throws Exception {
         List<String> strList = new ArrayList<>();
         String sheetId = "1IiD5X5MO1dluMwtVciErDDFuJW0axhhC73Zi1KYMZi0";

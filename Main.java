@@ -34,5 +34,6 @@ public final class Main{
             e.printStackTrace();
         }
     }
+    // TODO: maybe make word order factor into this for more complex sentences?
 
 }
