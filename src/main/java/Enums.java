@@ -1,4 +1,3 @@
-package src.main.java;
 public class Enums {
 //    // public enum Gender {
 //         MALE,

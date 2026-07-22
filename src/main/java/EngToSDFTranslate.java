@@ -1,12 +1,10 @@
-package src.main.java;
 import java.util.ArrayList;
-import java.util.Dictionary;
 import java.util.List;
 import simplenlg.framework.NLGFactory;
 import simplenlg.lexicon.Lexicon;
 import simplenlg.framework.WordElement;
 import simplenlg.framework.LexicalCategory;
-import src.main.java.wordtypes.*;
+import wordtypes.*;
 
 
 public class EngToSDFTranslate {
@@ -28,12 +26,15 @@ public class EngToSDFTranslate {
         return str.substring(0, str.length() - 1);
     }
     public static List<words> sentenceWords = new ArrayList<>();
-
+    public static String baseForm(String a) {
+        return lexicon.lookupWord(a,LexicalCategory.VERB).getBaseForm();
+    }
     public static String engToSDFTranslate(String sentence) throws Exception {
        String curWord = "";
         String wordType ="";
         List<String> punctuation = new ArrayList<>();
         for (int i = 0; i < sentence.length(); i++){
+            Boolean lemmatized = false;
             char curChar = sentence.charAt(i);
             
             if (!(curChar == ' ')){
@@ -67,8 +68,12 @@ public class EngToSDFTranslate {
                         }
                     }
                     for (int a = 0; a < dictionary.getVerbsList().size(); a++){
-                        if (dictionary.getVerbsList().get(a).engWord.equals(curWord)){
+                        if (dictionary.getVerbsList().get(a).engWord.equals(curWord) ||
+                            dictionary.getVerbsList().get(a).engWord.equals(baseForm(curWord))){
                             wordType = "verb";
+                            if (!dictionary.getVerbsList().get(a).engWord.equals(curWord)) {
+                                lemmatized = true;
+                            }
                             //System.out.println(curWord + " is a verb");
                         }
                     }
@@ -101,7 +106,8 @@ public class EngToSDFTranslate {
                     }
 
                 //System.out.println(curWord+" "+wordType);
-                sentenceWords.add(new words(curWord, wordType));
+                String x = lemmatized ? baseForm(curWord) : curWord;
+                sentenceWords.add(new words(x, wordType));
                 curWord = "";
                 wordType = "";
                 //System.out.println(str);
@@ -188,11 +194,14 @@ public class EngToSDFTranslate {
             }
             if (type == "verb") {
                 Boolean lemmatized = false;
+                String lemmatizedWord = "";
                 for (Verb x: dictionary.getVerbsList()) {
-                    if (lexicon.lookupWord(x.engWord,LexicalCategory.VERB).getBaseForm().equals(engWord)) {
+                    if (baseForm(x.engWord).equals(engWord)) {
                         word = x.word;
-                        if (engWord != x) {
+                        lemmatizedWord = word;
+                        if (!engWord.equals(x.engWord)) {
                             lemmatized = true;
+                            lemmatizedWord = baseForm(x.engWord);
                         }
                         // TODO: test & add checking for past/future etc to add back marker pre/suffixes
                     }

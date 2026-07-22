@@ -1,8 +1,7 @@
-package src.main.java;
 import java.util.ArrayList;
 import java.util.List;
 
-import src.main.java.wordtypes.*;
+import wordtypes.*;
 
 public class Dictionary {
     public static final List<Adjective> adjectives = new ArrayList<>();

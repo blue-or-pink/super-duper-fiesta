@@ -1,4 +1,4 @@
-package src.main.java.wordtypes;
+package wordtypes;
 public class Linking{
     //
     public String word = "";

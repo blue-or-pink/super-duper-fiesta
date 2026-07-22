@@ -1,5 +1,4 @@
-package src.main.java.wordtypes;
-
+package wordtypes;
 public class Adjective{
     //
     public String word = "";
