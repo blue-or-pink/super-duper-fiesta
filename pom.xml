@@ -1,0 +1,5 @@
+<dependency>
+    <groupId>com.github.simplenlg</groupId>
+    <artifactId>simplenlg</artifactId>
+    <version>4.5.0</version> 
+</dependency>

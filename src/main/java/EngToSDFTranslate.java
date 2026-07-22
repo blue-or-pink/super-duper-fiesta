@@ -1,8 +1,17 @@
+package src.main.java;
 import java.util.ArrayList;
+import java.util.Dictionary;
 import java.util.List;
+import simplenlg.framework.NLGFactory;
+import simplenlg.lexicon.Lexicon;
+import simplenlg.framework.WordElement;
+import simplenlg.framework.LexicalCategory;
+import src.main.java.wordtypes.*;
+
 
 public class EngToSDFTranslate {
     private static final Dictionary dictionary = Main.dictionary;
+    private static final Lexicon lexicon = Lexicon.getDefaultLexicon();
 
     public static class words {
         String word = "";
@@ -178,9 +187,14 @@ public class EngToSDFTranslate {
                  str = str + word + " ";
             }
             if (type == "verb") {
+                Boolean lemmatized = false;
                 for (Verb x: dictionary.getVerbsList()) {
-                    if (x.engWord.equals(engWord)) {
+                    if (lexicon.lookupWord(x.engWord,LexicalCategory.VERB).getBaseForm().equals(engWord)) {
                         word = x.word;
+                        if (engWord != x) {
+                            lemmatized = true;
+                        }
+                        // TODO: test & add checking for past/future etc to add back marker pre/suffixes
                     }
                 }
                 String adverbMarker = "";
@@ -191,7 +205,7 @@ public class EngToSDFTranslate {
                         adverbMarker = marker.word;
                     }
                 }
-                 str = str + word + " ";
+                 str = str + lemmatizedWord + " ";
                  for (String adj: adjective) {
                     str = str + adj + adverbMarker + " ";
                  }

@@ -1,3 +1,4 @@
+package src.main.java.wordtypes;
 
 public class Marker{
     //

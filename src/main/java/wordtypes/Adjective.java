@@ -1,10 +1,11 @@
+package src.main.java.wordtypes;
 
-public class Noun{
+public class Adjective{
     //
     public String word = "";
     public String engWord = "";
     //
-    public Noun(String engWord, String word) {
+    public Adjective(String engWord, String word) {
         this.word = word;
         this.engWord = engWord;
     }

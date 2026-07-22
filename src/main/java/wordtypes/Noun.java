@@ -1,10 +1,11 @@
+package src.main.java.wordtypes;
 
-public class Verb{
+public class Noun{
     //
     public String word = "";
     public String engWord = "";
     //
-    public Verb(String engWord, String word) {
+    public Noun(String engWord, String word) {
         this.word = word;
         this.engWord = engWord;
     }

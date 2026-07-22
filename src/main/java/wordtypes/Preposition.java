@@ -1,10 +1,11 @@
+package src.main.java.wordtypes;
 
-public class Linking{
+public class Preposition{
     //
     public String word = "";
     public String engWord = "";
     //
-    public Linking(String engWord, String word) {
+    public Preposition(String engWord, String word) {
         this.word = word;
         this.engWord = engWord;
     }
