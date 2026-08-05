@@ -16,6 +16,214 @@ public class Enums {
 //     }
 }
 
+import java.util.Scanner;
+
+import gov.nih.nlm.nls.lvg.Lib.Gender;
+import wordtypes.Pronoun;
+
+
+
+if (type == "pronoun") {
+    Scanner scanner = new Scanner(System.in);
+    if (x.engWord.equals("I") || x.engWord.equals("me")){
+        Boolean valid = false;
+        while (valid == false){
+            System.out.println("Is the speaker");
+            System.out.println("(a) female");
+            System.out.println("(b) male");
+            System.out.println("(c) other");
+            String answer = scanner.nextLine();
+            if (answer.equalsIgnoreCase("a")){
+                word = "tɪ";
+                valid = true;
+            } else if (answer.equalsIgnoreCase("b")){
+                word = "dɪ";
+                valid = true;
+            } else if (answer.equalsIgnoreCase("c")){
+                word = "sɪ";
+                valid = true;
+            } else {
+                System.out.println("Error, please type either a, b, or c");
+            }
+        }
+    } else if (x.engWord.equals("you")){
+        Boolean valid = false;
+        int person = 2;
+        Boolean plural;
+        while (valid == false){
+            System.out.println("Is you refering to..");
+            System.out.println("(a) one person");
+            System.out.println("(b) multiple people");
+            String answer = scanner.nextLine();
+            if (answer.equalsIgnoreCase("a")){
+                plural = false;
+                valid = true;
+            } else if (answer.equalsIgnoreCase("b")){
+                plural = true;
+                valid = true;
+            } else {
+                System.out.println("Error, please type either a or b");
+            }
+        }
+        valid = false;
+        //gender
+        while (valid == false){
+            if (plural == false){
+                System.out.println("What is their gender?");
+                System.out.println("(a) female");
+                System.out.println("(b) male");
+                System.out.println("(c) other");
+                Boolean validTwo = false;
+                while (validTwo == false){
+                    String answer = scanner.nextLine();
+                    //work from here
+                    if (answer.equalsIgnoreCase("a")){
+                        word = "tɪs";
+                        validTwo = true;
+                    } else if (answer.equalsIgnoreCase("b")){
+                        word = "dɪs";
+                        validTwo = true;
+                    } else if (answer.equalsIgnoreCase("c")){
+                        word = "sɪs";
+                        validTwo = true;
+                    } else {
+                        System.out.println("Error, please type either a, b, or c");
+                    }
+                }
+            } else if (plural == true){
+                System.out.println("Type one f and one m and one o for each person of that gender in the group described by you");
+                System.out.println("Ex: ffmo");
+                int numF = 0;
+                int numM = 0;
+                int numO = 0;
+                String answer = scanner.nextLine();
+                for (int i = 0; i<answer.length(); i++){
+                    if (answer.charAt(i) == 'f'){
+                        numF += 1;
+                    } else if (answer.charAt(i) == 'm'){
+                        numM += 1;
+                    } else if (answer.charAt(i) == 'o'){
+                        numO += 1;
+                    }
+                }
+                if (numF == 0 && numO == 0){
+                    word = "dʊup";
+                } else if (numM == 0 && numO == 0){
+                    word = "tʊup";
+                } else if (numF == 0 && numM == 0){
+                    word = "sʊup";
+                } else if (numF == numM && numM == numO){
+                    word = "tʊdʊs";
+                } else if (numF == numM && numO == 0){
+                    word = "tʊd";
+                } else if (numF == numO && numM == 0){
+                    word = "tʊs";
+                } else if (numM == numO && numF == 0){
+                    word = "dʊs";
+                } else if (numF == numM && numO != numM && numO != 0){
+                    word = "fʊmis";
+                } else if (numM == numO && numF != numO && numF != 0){
+                    word = "dʊsif";
+                } else if (numF == numO && numO != numM && numM != 0){
+                    word = "tʊsid";
+                } else if (numF > numM && numF > numO){
+                    word = "tʊhi";
+                } else if (numM > numF && numM > numO){
+                    word = "dʊhi";
+                } else if (numO > numF && numO > numM){
+                    word = "sʊhi";
+                }
+            } 
+        }
+    } else if (x.engWord.equals("she") || x.engWord.equals("her")){
+        word = "tə";
+    } else if (x.engWord.equals("he") || x.engWord.equals("him")) {
+        word = "də";
+    } else if (x.engWord.equals("they" || x.engWord.equals("them"))){
+        System.out.println("Does they refer to..");
+        System.out.println("(a) one person");
+        System.out.println("(b) multiple people");
+        String answer = scanner.nextLine();
+        valid = false;
+        while (valid = false){
+            answer = scanner.nextLine();
+            //singular
+            if (answer.equalsIgnoreCase("a")){
+                Boolean plural = false;
+                valid = true;
+                Boolean validTwo = false;
+                System.out.println("What is their gender?");
+                System.out.println("(a) female");
+                System.out.println("(b) male");
+                System.out.println("(c) other");
+                while (validTwo = false){
+                    answer = scanner.nextLine();
+                    if (answer.equals("a")){
+                        word = "tə";
+                        validTwo = true;
+                    } else if (answer.equals("b")){
+                        word = "də";
+                        validTwo = true;
+                    } else if (answer.equals("c")){
+                        word = "sə";
+                        validTwo = true;
+                    } else {
+                        System.out.println("Error, please type either a, b, or c");
+                    }
+                }
+            
+
+            //plural
+            } else if (answer.equalsIgnoreCase("b")){
+                Boolean plural = true;
+                Boolean valid = true;
+                System.out.println("Type one f and one m and one o for each person of that gender in the group described by you");
+                System.out.println("Ex: ffmo");
+                int numF = 0;
+                int numM = 0;
+                int numO = 0;
+                answer = scanner.nextLine();
+                for (int i = 0; i<answer.length(); i++){
+                    if (answer.charAt(i) == 'f'){
+                        numF += 1;
+                    } else if (answer.charAt(i) == 'm'){
+                        numM += 1;
+                    } else if (answer.charAt(i) == 'o'){
+                        numO += 1;
+                    }
+                }
+                
+                //here i just have to add all of the words (bold in the sheet), and then after that (later in the code) add we
+
+
+
+            } else {
+                System.out.println("Error, please type either a or b");
+            }
+        }
+
+        
+
+
+    }
+
+    // for (Pronoun x: dictionary.getPronounsList()) {
+    //     if (x.engWord.equals(engWord)) {
+    //         word = x.word;
+    //     }
+    // }
+        str = str + word + " ";
+}
+
+
+    System.out.println("");
+
+
+
+
+
+
+
 // NOTE: NOT FINISHED!!!
 /*      Scanner scanner = new Scanner(System.in);
         System.out.println("What is the gender?");

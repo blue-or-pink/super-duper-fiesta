@@ -32,6 +32,7 @@ public final class Main{
        // while (true) {
     //    System.out.println(lexicon.lookupWord("helping")+" "+baseForm("helping"));
             Scanner scanner = new Scanner(System.in);
+            System.out.println("What sentence would you like to translate?");
             String sentence = scanner.nextLine();
             translated = EngToSDFTranslate.engToSDFTranslate((sentence + " ").toLowerCase());
        // }
