@@ -16,6 +16,7 @@ public class Spreadsheet {
             String line;
             while ((line = in.readLine()) != null) {
                 strList.add((line + ",").toLowerCase());
+                Constants.pronounsListLength += 1;
             }
         }
 
@@ -33,6 +34,8 @@ public class Spreadsheet {
             while ((line = in.readLine()) != null) {
                 strList.add((line + ",").toLowerCase());
             }
+            Constants.adjectivesListLength += 1;
+
         }
 
         return strList;
@@ -48,7 +51,8 @@ public class Spreadsheet {
             String line;
             while ((line = in.readLine()) != null) {
                 strList.add((line + ",").toLowerCase());
-                
+                Constants.linkingsListLength += 1;
+
             }
         }
 
@@ -65,6 +69,8 @@ public class Spreadsheet {
             String line;
             while ((line = in.readLine()) != null) {
                 strList.add((line + ",").toLowerCase());
+                Constants.prepositionsListLength += 1;
+
             }
         }
 
@@ -82,6 +88,8 @@ public class Spreadsheet {
             String line;
             while ((line = in.readLine()) != null) {
                 strList.add((line + ",").toLowerCase());
+                Constants.nounsListLength += 1;
+
             }
         }
 
@@ -98,6 +106,8 @@ public class Spreadsheet {
             String line;
             while ((line = in.readLine()) != null) {
                 strList.add((line + ",").toLowerCase());
+                Constants.verbsListLength += 1;
+
             }
         }
 
