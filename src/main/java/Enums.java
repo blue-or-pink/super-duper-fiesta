@@ -132,6 +132,8 @@ if (type == "pronoun") {
                     word = "dʊhi";
                 } else if (numO > numF && numO > numM){
                     word = "sʊhi";
+                } else {
+                    word = "ERROR";
                 }
             } 
         }
@@ -192,8 +194,37 @@ if (type == "pronoun") {
                         numO += 1;
                     }
                 }
+                if (numM == 0 && numO == 0){
+                    word = "tɑ";
+                } else if (numF == 0 && numO == 0){
+                    word = "dɑ";
+                } else if (numF == 0 && numM == 0){
+                    word = "sɑ";
+                } else if (numF == numM && numM == numO){
+                    word = "tɑdas";
+                } else if (numF == numM && numO == 0){
+                    word = "tɑd";
+                } else if (numF == numO && numM == 0){
+                    word = "tɑs";
+                } else if (numM == numO && numF == 0){
+                    word = "dɑs";
+                } else if (numF == numM && numO > 0){
+                    word = "tɑdis";
+                } else if (numM == numO && numF > 0){
+                    word = "dɑsif";
+                } else if (numF == numO && numM > 0){
+                    word = "tɑsid";
+                } else if (numF > numM && numF > numO){
+                    word = "tɑhi";
+                } else if (numM > numF && numM > numO){
+                    word = "dɑhi";
+                } else if (numO > numM && numO > numF){
+                    word = "sɑhi";
+                } else {
+                    word = "ERROR";
+                }
                 
-                //here i just have to add all of the words (bold in the sheet), and then after that (later in the code) add we
+                //need add we
 
 
 
