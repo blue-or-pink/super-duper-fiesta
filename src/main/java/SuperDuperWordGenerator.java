@@ -45,7 +45,7 @@ public class SuperDuperWordGenerator {
         Random rand = new Random();
         for (int i = 0; i < 1; i++) { //50
             String word = "/";
-            int syllables = rand.nextInt(3);
+            int syllables = rand.nextInt(5);
             if (syllables == 0) {
                 syllables = 1;
             }

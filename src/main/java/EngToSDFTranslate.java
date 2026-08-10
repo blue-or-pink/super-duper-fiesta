@@ -1,5 +1,8 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 import simplenlg.framework.NLGFactory;
 import simplenlg.lexicon.Lexicon;
 import simplenlg.framework.WordElement;
@@ -32,23 +35,67 @@ public class EngToSDFTranslate {
     public static String engToSDFTranslate(String sentence) throws Exception {
        String curWord = "";
         String wordType ="";
+        int curPose = 0;
         List<String> punctuation = new ArrayList<>();
+        List<Integer> digits = new ArrayList<>();
+        List<String> numbers = new ArrayList<>();
         for (int i = 0; i < sentence.length(); i++){
             Boolean lemmatized = false;
             char curChar = sentence.charAt(i);
+            Boolean isNum = false;
             
+            try {
+                Double.parseDouble(String.valueOf(curChar));
+                isNum = true;
+            } catch (NumberFormatException e) {
+                isNum = false;
+            }
             if (!(curChar == ' ')){
-                if (curChar == '.' || curChar == '?' || curChar == '!' || curChar == ',') {
-                   //System.out.println("_"+curChar+"_");
-                    punctuation.add(String.valueOf(curChar));
-
+                //if (curChar == '.' || curChar == '?' || curChar == '!' || curChar == ',') {
+                // System.out.println(String.valueOf(curChar));
+                if (Constants.punctuationList.contains(String.valueOf(curChar))) {
+                //    System.out.println("_"+curChar+"_");
+                   if (digits.size() > 0) { 
+                        String x = "";
+                        for (Integer o: digits) {
+                            x = x+ String.valueOf(o);
+                        }
+                        numbers.add(x+"_"+curPose);
+                        curPose += 1;
+                        digits = new ArrayList<>();
+                    }
+                    punctuation.add(String.valueOf(curChar)+"_"+curPose);
+                    curPose += 1;
+                }
+                else if (isNum) {
+                        digits.add(Integer.valueOf(String.valueOf(curChar)));
                 }
                 else {
+                    if (digits.size() > 0) {
+
+                        String x = "";
+                        for (Integer o: digits) {
+                            x = x+ String.valueOf(o);
+                        }
+                        numbers.add(x+"_"+curPose);
+                        curPose += 1;
+                        digits = new ArrayList<>();
+                    }
                     curWord = curWord + curChar;
                 }
                 
+                
             } else {
                // System.out.println(curWord);
+               if (digits.size() > 0) {
+                        String x = "";
+                        for (Integer o: digits) {
+                            x = x+ String.valueOf(o);
+                        }
+                        numbers.add(x+"_"+curPose);
+                        curPose += 1;
+                        digits = new ArrayList<>();
+                    }
                     for (int a = 0; a < dictionary.getPronounsList().size(); a++){
                         if (dictionary.getPronounsList().get(a).engWord.equals(curWord)){
                             wordType = "pronoun";
@@ -111,12 +158,25 @@ public class EngToSDFTranslate {
                 curWord = "";
                 wordType = "";
                 //System.out.println(str);
-                for (String str: punctuation) {
-                    sentenceWords.add(new words(str, "punctuation"));
+                int len = punctuation.size() + numbers.size();
+                for (int p = 0; p < len; p++) {
+                    for (String pun: punctuation) {
+                        // System.out.println(pun+" "+pun.charAt(pun.length() - 1)+" "+Integer.valueOf(String.valueOf(pun.charAt(pun.length() - 1))));
+                        // System.out.println(": "+Integer.valueOf(pun.charAt(pun.length() - 1)));
+                        if (Integer.valueOf(String.valueOf(pun.charAt(pun.length() - 1))) == p) {
+                            // System.out.println(pun +" p "+ p);
+                            sentenceWords.add(new words(removeLastChar(removeLastChar(pun)), "punctuation"));
+                        }
+                    }
+                    for (String n: numbers) {
+                        if (Integer.valueOf(String.valueOf(n.charAt(n.length() - 1))) == p) {
+                            // System.out.println(n +" n "+ p);
+                            sentenceWords.add(new words(removeLastChar(removeLastChar(n)), "number"));
+                        }
+                    }
                 }
-                punctuation = new ArrayList<>();
 
-                
+
             }
 
 
@@ -124,7 +184,8 @@ public class EngToSDFTranslate {
         }
         String str = "";
         List<String> adjective = new ArrayList<>();
-
+        List<String> exponential = new ArrayList<>();
+        // System.out.println(numbers.size());
         for (int i=0;i<sentenceWords.size();i++) {
             String engWord = sentenceWords.get(i).word;
             String type = sentenceWords.get(i).wordType;
@@ -227,11 +288,59 @@ public class EngToSDFTranslate {
                     str = str + x + " ";
                 }
             }
+            if (type == "number") {
+                // System.out.println("ih3rf;oiaejvp'oaerfjo;4ailhrnaluy43hrdu "+str);
+                String base12num = Integer.toString(Integer.valueOf(engWord),12);
+                str = str + base12num + " ";
+            }
             if (type == "punctuation") {
-                if (str.charAt(str.length() - 1) == ' ') {
-                    str = removeLastChar(str); // remove the extra space
+                // System.out.println("ppppefjwiefjiewfj");
+                if (str.length() > 0) {
+                    if (str.charAt(str.length() - 1) == ' ') {
+                        str = removeLastChar(str); // remove the extra space
+                    }
                 }
-                str = str + engWord + " ";
+                exponential.add(engWord);
+                int power = 0;
+
+
+                // TODO: fix exponents idfk its pretty close tho
+                if (exponential.size() > 1) {
+                    // System.out.println("hjbgiytdrutyhnjbiyut4ghucrthguyhtydrtugiuhefgt");
+
+                    if ((! exponential.get(exponential.size()-1).equals(exponential.get(exponential.size()-2)))
+                        ||( i == sentenceWords.size()-1 )
+                        || (sentenceWords.get(i + 1).wordType != "punctuation")) {
+                            // System.out.println(exponential.get(exponential.size())+" ijfoj3foj34fijf");
+                            power = exponential.size()-1;
+                            if (i == sentenceWords.size()-1 ) {
+                                if (power > 1) {
+                                    str = str + engWord + "^" + (power+1) + " ";
+                                }
+                                else {
+                                    str = str + engWord + " ";
+                                }
+                            }
+                            else {
+                                if (power > 1) {
+                                    str = str + engWord + "^" + power+1 + " ";
+                                }
+                                else {
+                                    str = str + engWord + " ";
+                                }
+                            }
+                            String a = exponential.get(power); // last one
+                            exponential = new ArrayList<>();
+                            exponential.add(a);
+                    }
+                }
+                else {
+                    if ( i == sentenceWords.size()-1 ) {
+                        str = str + engWord + " ";
+                    }
+                }
+                
+                // str = str + engWord + " ";
             }
            
         }

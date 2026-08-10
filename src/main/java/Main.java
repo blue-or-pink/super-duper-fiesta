@@ -4,12 +4,11 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
 
-import simplenlg.framework.LexicalCategory;
-import simplenlg.lexicon.Lexicon;
+
 
 public final class Main{
    public static final Dictionary dictionary;
-    private static final Lexicon lexicon = Lexicon.getDefaultLexicon();
+    private static final Constants constants = new Constants();
 
     // public static String baseForm(String a) {
     //     return lexicon.lookupWord(a,LexicalCategory.VERB).getBaseForm();
