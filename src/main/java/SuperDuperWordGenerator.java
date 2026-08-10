@@ -43,9 +43,11 @@ public class SuperDuperWordGenerator {
     };
     public static void main(String[] args) throws Exception {
         Random rand = new Random();
-        for (int i = 0; i < 1; i++) { //50
+        //num words to generate
+        for (int i = 0; i < 12; i++) { 
             String word = "/";
-            int syllables = rand.nextInt(5);
+            //max num syllables
+            int syllables = rand.nextInt(3);
             if (syllables == 0) {
                 syllables = 1;
             }

@@ -9,21 +9,20 @@ public class Constants {
     public static  int nounsListLength = 0;
     public static  int linkingsListLength = 0;
 
-    public static final List<String> punctuationList = new ArrayList<>();// = {"?",".",",","!","(",")"};
+    //numbers
+    public static String one = "ʊs";
+    public static String two = "ɛm";
+    public static String three = "ɔd";
+    public static String four = "ni.sʊ";
+    public static String five = "lik";
+    public static String six = "bɔ.ŋɛf";
+    public static String seven = "məg";
+    public static String eight = "ək";
+    public static String nine = "zu";
+    public static String ten = "lət";
+    public static String eleven = "əv";
+    public static String twelve = "jɑz";
 
-
-    public Constants() {
-        punctuationList.add("?");
-        punctuationList.add(".");
-        punctuationList.add(",");
-        punctuationList.add("!");
-        punctuationList.add("(");
-        punctuationList.add(")");
-        punctuationList.add(":");
-
-
-        
-    }
     // public static final int pronounsListLength = 49;
     // public static final int adjectivesListLength = 56;
     // public static final int prepositionsListLength = 71;
