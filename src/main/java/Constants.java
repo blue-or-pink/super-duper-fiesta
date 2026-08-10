@@ -23,6 +23,21 @@ public class Constants {
     public static String eleven = "əv";
     public static String twelve = "jɑz";
 
+    public static final List<String> punctuationList = new ArrayList<>();// = {"?",".",",","!","(",")"};
+
+
+    public Constants() {
+        punctuationList.add("?");
+        punctuationList.add(".");
+        punctuationList.add(",");
+        punctuationList.add("!");
+        punctuationList.add("(");
+        punctuationList.add(")");
+        punctuationList.add(":");
+
+
+        
+    }
     // public static final int pronounsListLength = 49;
     // public static final int adjectivesListLength = 56;
     // public static final int prepositionsListLength = 71;
