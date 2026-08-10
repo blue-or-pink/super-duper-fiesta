@@ -180,7 +180,6 @@ public class EngToSDFTranslate {
             //beginning of pronoun section
             if (type == "pronoun") {
                 Scanner scanner = new Scanner(System.in);
-                System.out.println("engWord for the pronoun is " + engWord);
                 if (engWord.equalsIgnoreCase("i") || engWord.equals("me")){
                     Boolean valid = false;
                     while (valid == false){
@@ -234,7 +233,6 @@ public class EngToSDFTranslate {
                             while (validTwo == false){
                                 String answer = scanner.nextLine();
                                 //work from here
-                                System.out.println("you typed " + answer);
                                 if (answer.equalsIgnoreCase("a")){
                                     word = "tɪs";
                                     validTwo = true;
@@ -250,7 +248,7 @@ public class EngToSDFTranslate {
                             }
                             valid = true;
                         } else if (plural == true){
-                            System.out.println("Type one f and one m and one o for each person of that gender in the group described by you");
+                            System.out.println("Type one f and one m and one o for each person of that gender in the group described by " + engWord);
                             System.out.println("Ex: ffmo");
                             int numF = 0;
                             int numM = 0;
@@ -336,7 +334,7 @@ public class EngToSDFTranslate {
                         } else if (answer.equalsIgnoreCase("b")){
                             Boolean plural = true;
                             valid = true;
-                            System.out.println("Type one f and one m and one o for each person of that gender in the group described by you");
+                            System.out.println("Type one f and one m and one o for each person of that gender in the group described by " + engWord);
                             System.out.println("Ex: ffmo");
                             int numF = 0;
                             int numM = 0;
@@ -386,9 +384,56 @@ public class EngToSDFTranslate {
                             System.out.println("Error, please type either a or b");
                         }
                     }
+                } else if (engWord.equals("we") || engWord.equals("us")){
+                    System.out.println("Type one f and one m and one o for each person of that gender in the group described by " + engWord);
+                            System.out.println("Ex: ffmo");
+                            int numF = 0;
+                            int numM = 0;
+                            int numO = 0;
+                            String answer = scanner.nextLine();
+                            for (int a = 0; a<answer.length(); a++){
+                                if (answer.charAt(a) == 'f'){
+                                    numF += 1;
+                                } else if (answer.charAt(a) == 'm'){
+                                    numM += 1;
+                                } else if (answer.charAt(a) == 'o'){
+                                    numO += 1;
+                                }
+                            }
+                            if (numF == 0 && numO == 0){
+                                word = "di";
+                            } else if (numM == 0 && numO == 0){
+                                word = "ti";
+                            } else if (numF == 0 && numM == 0){
+                                word = "si";
+                            } else if (numM == numF && numF == numO){
+                                word = "ditisi";
+                            } else if (numF == numM && numO == 0){
+                                word = "diti";
+                            } else if (numM == numO && numF == 0){
+                                word = "disi";
+                            } else if (numF == numO && numM == 0){
+                                word = "tisi";
+                            } else if (numF == numM && numO > 0){
+                                word = "diitiisi";
+                            } else if (numM == numO && numF > 0){
+                                word = "diisiiti";
+                            } else if (numF == numO && numM > 0){
+                                word = "tiisiidi";
+                            } else if (numM > numF && numM > numO){
+                                word = "dii";
+                            } else if (numF > numM && numF > numO){
+                                word = "tii";
+                            } else if (numO > numM && numO > numF){
+                                word = "sii";
+                            } else {
+                                word = "ERROR";
+                            }
                 }
-                 str = str + word + " ";
+                str = str + word + " ";
             }
+
+
 
 
 
