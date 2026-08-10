@@ -29,40 +29,53 @@ public class Dictionary {
         markers.add(new Marker("plural", "ji", "start"));
 
         for (int i = 0; i < Constants.pronounsListLength; i++){
-            String word = "";
-            String gender = null;
-            String plural = "";
-            int person = 0;
-            String engWord = "";
-            String curString = pronounsStrings.get(i);
-            String curVar = "";
-            int curVarNum = 1;
+            // String word = "";
+            // String gender = null;
+            // String plural = "";
+            // int person = 0;
+            // String engWord = "";
+            // String curString = pronounsStrings.get(i);
+            // String curVar = "";
+            // int curVarNum = 1;
 
-            for (int a = 0; a < curString.length(); a++){
-                char curChar = curString.charAt(a); 
-                if (!String.valueOf(curChar).equals(",")) { //it was == earlier which doesn't work for strings apparently, you need to do .equals
-                    curVar = curVar + curChar;
-                } else {
-                    if (curVarNum == 1){
-                        word = curVar;
-                    } else if (curVarNum == 2){
-                        gender = curVar;
-                    } else if (curVarNum == 3){
-                        if (curVar.equals("TRUE")){ //the issue here was the same, it was == instead of .equals so it was never true
-                            plural = "true";
-                        } else if (curVar.equals("FALSE")){
-                            plural = "false";
-                        }
-                    } else if (curVarNum == 4){
-                        person = Integer.parseInt(curVar);
-                    } else if (curVarNum == 5){
-                        engWord = curVar;
-                    }
-                    curVarNum +=1;
-                    curVar = ""; //it never reset curVar earlier so it wasn't actually separating the values
-                }      
-            }
-            pronouns.add(new Pronoun(word, gender, plural, person, engWord));
+            // for (int a = 0; a < curString.length(); a++){
+            //     char curChar = curString.charAt(a); 
+            //     if (!String.valueOf(curChar).equals(",")) {
+            //         curVar = curVar + curChar;
+            //     } else {
+            //         if (curVarNum == 1){
+            //             word = curVar;
+            //         } else if (curVarNum == 2){
+            //             gender = curVar;
+            //         } else if (curVarNum == 3){
+            //             if (curVar.equals("TRUE")){\
+            //                 plural = "true";
+            //             } else if (curVar.equals("FALSE")){
+            //                 plural = "false";
+            //             }
+            //         } else if (curVarNum == 4){
+            //             person = Integer.parseInt(curVar);
+            //         } else if (curVarNum == 5){
+            //             engWord = curVar;
+            //         }
+            //         curVarNum +=1;
+            //         curVar = "";
+            //     }      
+            // }
+            // pronouns.add(new Pronoun(engWord));
+            pronouns.add(new Pronoun("i"));
+            pronouns.add(new Pronoun("you"));
+            pronouns.add(new Pronoun("he"));
+            pronouns.add(new Pronoun("she"));
+            pronouns.add(new Pronoun("it"));
+            pronouns.add(new Pronoun("we"));
+            pronouns.add(new Pronoun("they"));
+            pronouns.add(new Pronoun("me"));
+            pronouns.add(new Pronoun("him"));
+            pronouns.add(new Pronoun("her"));
+            pronouns.add(new Pronoun("us"));
+            pronouns.add(new Pronoun("them"));
+
         }
 
         //prepositions, verbs
